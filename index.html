@@ -1,12 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabriella Huppes</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gabriella Huppes</title>
+  <link rel="stylesheet" href="index.css">
+  <!--Importando a fonte e os icones para o botão Editar e Apagar-->
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
-    
+  <div class="container">
+    <div class="header">
+      <span>Agenda Telefonica</span>
+      <button onclick="openModal()" id="new">Adicionar Telefone</i></button>
+    </div>
+
+    <div class="divTable">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>telefone</th>
+            <th class="acao">Editar</th>
+            <th class="acao">Apagar</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+<!--O valor da modal vem para cá-->
+    <div class="modal-container">
+      <div class="modal">
+        <form>
+          <label for="m-nome">Nome</label>
+          <input id="m-nome" type="text" pattern= "[A-Za-z]+" title="Por nome completo" required />
+  
+          <label for="m-email">Email</label>
+          <input id="m-email" type="email" title="Obrigatório o uso de '@'" required placeholder="xxxxx@gmail.com" />
+  
+          <label for="m-telefone">telefone</label>
+          <input id="m-telefone" type="tel" pattern="([0-9]{2}) [0-9]{5}-[0-9]{4}" title="Padrão Brasil" required placeholder="(xx) xxxxx-xxxx"/>
+          <button id="btnSalvar">Salvar</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <script src="index.js"></script>
 </body>
+
 </html>
