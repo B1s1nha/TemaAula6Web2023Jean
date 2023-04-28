@@ -5,6 +5,8 @@ const tbody = document.querySelector('tbody')
 const sNome = document.querySelector('#m-nome')
 const sEmail = document.querySelector('#m-email')
 const sTelefone = document.querySelector('#m-telefone')
+const sImagem = document.querySelector('#m-imagem')
+var imagemBase64;
 const btnSalvar = document.querySelector('#btnSalvar')
 
 let itens
@@ -23,14 +25,17 @@ function openModal(edit = false, index = 0) {
     sNome.value = itens[index].nome
     sEmail.value = itens[index].email
     sTelefone.value = itens[index].telefone
+    sImagem.value = itens[index].imagem
     id = index
   } else { //Se não, aparecerá vazio para então criar do zero uma id
     sNome.value = ''
     sEmail.value = ''
     sTelefone.value = ''
+    sImagem.value = ''
   }
   
 }
+
 //Muda os dados
 function editItem(index) {
   openModal(true, index)
@@ -42,6 +47,25 @@ function deleteItem(index) {
   loadItens()
 }
 
+function converterImagem(){
+  var receberArquivo = document.getElementById("m-imagem").files;
+  if(receberArquivo.length > 0){
+    var carregarImagem = receberArquivo[0];
+
+    var LerArquivo = new FileReader();
+    LerArquivo.onload = function(arquivoCarregado){
+      imagemBase64 = arquivoCarregado.target.result;
+      var novaImagem = document.createElement("img");
+      novaImagem.src = imagemBase64;
+      console.log(imagemBase64);
+      document.getElementById("apresentar-imagem").innerHTML = novaImagem.outerHTML;
+      document.getElementById("apresentar-imagem") == item.imagem;
+      
+    }
+    LerArquivo.readAsDataURL(carregarImagem);
+  }
+}
+
 //Inserindo os itens do banco de dados para a nossa tela em HTML
 function insertItem(item, index) {
   let tr = document.createElement('tr')
@@ -50,6 +74,7 @@ function insertItem(item, index) {
     <td>${item.nome}</td>
     <td>${item.email}</td>
     <td>${item.telefone}</td>
+    <td><div id="apresentar-imagem"></div></td>
     <td class="acao">
       <button onclick="editItem(${index})"><i class='bx bx-edit bx-border-circle bx-tada-hover' ></i></button>
     </td>
@@ -62,7 +87,7 @@ function insertItem(item, index) {
 
 btnSalvar.onclick = e => {
   //Se não preencher, vai pedir obrigatoriamente para abrir o campo
-  if (sNome.value == '' || sEmail.value == '' || sTelefone.value == '') {
+  if (sNome.value == '' || sEmail.value == '' || sTelefone.value == '' || sImagem.value == '') {
     return
   }
 
@@ -72,8 +97,9 @@ btnSalvar.onclick = e => {
     itens[id].nome = sNome.value
     itens[id].email = sEmail.value
     itens[id].telefone = sTelefone.value
+    itens[id].imagem = sImagem.value
   } else {
-    itens.push({'nome': sNome.value, 'email': sEmail.value, 'telefone': sTelefone.value})
+    itens.push({'nome': sNome.value, 'email': sEmail.value, 'telefone': sTelefone.value, 'imagem': sImagem.value})
   }
 
   setItensBD()
