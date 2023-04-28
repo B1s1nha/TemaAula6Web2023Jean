@@ -76,10 +76,10 @@ function insertItem(item, index) {
     <td>${item.telefone}</td>
     <td><div id="apresentar-imagem"></div></td>
     <td class="acao">
-      <button onclick="editItem(${index})"><i class='bx bx-edit bx-border-circle bx-tada-hover' ></i></button>
+      <button onclick="editItem(${index})"><i class='bx bx-edit-alt bx-border-circle bx-tada-hover' ></i></button>
     </td>
     <td class="acao">
-      <button onclick="deleteItem(${index})"><i class='bx bx-trash bx-border-circle bx-tada-hover'></i></button>
+      <button onclick="deleteItem(${index})"><i class='bx bx-trash-alt bx-border-circle bx-tada-hover'></i></button>
     </td>
   `
   tbody.appendChild(tr)
