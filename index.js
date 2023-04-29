@@ -69,12 +69,12 @@ function converterImagem(){
 //Inserindo os itens do banco de dados para a nossa tela em HTML
 function insertItem(item, index) {
   let tr = document.createElement('tr')
-
+  
   tr.innerHTML = `
     <td>${item.nome}</td>
     <td>${item.email}</td>
     <td>${item.telefone}</td>
-    <td><div id="apresentar-imagem"></div></td>
+    <td><img src="${item.imagem}"></td>
     <td class="acao">
       <button onclick="editItem(${index})"><i class='bx bx-edit-alt bx-border-circle bx-tada-hover' ></i></button>
     </td>
