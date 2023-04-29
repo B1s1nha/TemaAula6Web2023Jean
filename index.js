@@ -6,7 +6,7 @@ const sNome = document.querySelector('#m-nome')
 const sEmail = document.querySelector('#m-email')
 const sTelefone = document.querySelector('#m-telefone')
 const sImagem = document.querySelector('#m-imagem')
-var imagemBase64;
+var imagemBase64;//
 const btnSalvar = document.querySelector('#btnSalvar')
 
 let itens
@@ -25,13 +25,15 @@ function openModal(edit = false, index = 0) {
     sNome.value = itens[index].nome
     sEmail.value = itens[index].email
     sTelefone.value = itens[index].telefone
-    sImagem.value = itens[index].imagem
+    sImagem.value = ''//
+    imagemBase64 = itens[index].imagem//
     id = index
   } else { //Se não, aparecerá vazio para então criar do zero uma id
     sNome.value = ''
     sEmail.value = ''
     sTelefone.value = ''
     sImagem.value = ''
+    imagemBase64 = ''
   }
   
 }
@@ -74,7 +76,7 @@ function insertItem(item, index) {
     <td>${item.nome}</td>
     <td>${item.email}</td>
     <td>${item.telefone}</td>
-    <td><img src="${item.imagem}"></td>
+    <td><img src="${item.imagem}" class="imagem"></td>
     <td class="acao">
       <button onclick="editItem(${index})"><i class='bx bx-edit-alt bx-border-circle bx-tada-hover' ></i></button>
     </td>

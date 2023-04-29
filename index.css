@@ -7,9 +7,11 @@
   font-family: "Poppins", sans-serif;
 }
 
-#apresentar-imagem img{
-  width: 100px;
-  height: 100px;
+.imagem{
+  max-width: 100px;
+  max-height: 100px;
+  width: auto;
+  height: auto;
 }
 
 body {
