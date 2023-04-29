@@ -97,9 +97,9 @@ btnSalvar.onclick = e => {
     itens[id].nome = sNome.value
     itens[id].email = sEmail.value
     itens[id].telefone = sTelefone.value
-    itens[id].imagem = sImagem.value
+    itens[id].imagem = imagemBase64
   } else {
-    itens.push({'nome': sNome.value, 'email': sEmail.value, 'telefone': sTelefone.value, 'imagem': sImagem.value})
+    itens.push({'nome': sNome.value, 'email': sEmail.value, 'telefone': sTelefone.value, 'imagem': imagemBase64})
   }
 
   setItensBD()
